@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:random_number_gen/logic/random_logic.dart';
@@ -21,10 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Random number',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFE28090)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xFFE28090),
+            brightness: PlatformDispatcher.instance.platformBrightness),
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.system,
       home: MainPage(),
     );
   }
