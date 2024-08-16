@@ -35,9 +35,17 @@ class MainPage extends StatelessWidget {
                 child: (Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                        style: Theme.of(context).textTheme.displaySmall,
-                        context.watch<RandomLogic>().result),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                              style: Theme.of(context).textTheme.displaySmall,
+                              context.watch<RandomLogic>().result),
+                          IconButton(
+                              onPressed: () => Clipboard.setData(ClipboardData(
+                                  text: context.read<RandomLogic>().result)),
+                              icon: Icon(Icons.copy))
+                        ]),
                     TextFormField(
                       focusNode: _startFocusNode,
                       controller: _startController,
@@ -65,7 +73,7 @@ class MainPage extends StatelessWidget {
                       onFieldSubmitted: (value) =>
                           context.read<RandomLogic>().generate(),
                       decoration: InputDecoration(
-                        labelText: "Начальное значение",
+                        labelText: "Конечное значение",
                         errorText: context.watch<RandomLogic>().endError
                             ? "Неверное значение"
                             : null,
