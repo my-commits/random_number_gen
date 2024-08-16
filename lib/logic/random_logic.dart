@@ -8,7 +8,7 @@ class RandomLogic with ChangeNotifier, DiagnosticableTreeMixin {
 
   int _start = 1;
   bool _startError = false;
-  int _end = 100;
+  int _end = 10;
   bool _endError = false;
   bool _internalError = false;
   int _result = 0;
@@ -25,8 +25,13 @@ class RandomLogic with ChangeNotifier, DiagnosticableTreeMixin {
     int? intValue = int.tryParse(value);
     if (intValue != null) {
       _start = intValue;
-      _internalError = false;
-      _startError = false;
+      if (_start < _end && _start <= 4294967296) {
+        _internalError = false;
+        _startError = false;
+      } else {
+        _internalError = true;
+        _startError = true;
+      }
     } else {
       _internalError = true;
       _startError = true;
@@ -38,8 +43,13 @@ class RandomLogic with ChangeNotifier, DiagnosticableTreeMixin {
     int? intValue = int.tryParse(value);
     if (intValue != null) {
       _end = intValue;
-      _internalError = false;
-      _endError = false;
+      if (_start < _end && _end <= 4294967296) {
+        _internalError = false;
+        _endError = false;
+      } else {
+        _internalError = true;
+        _endError = true;
+      }
     } else {
       _internalError = true;
       _endError = true;
