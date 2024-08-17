@@ -2,10 +2,6 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 
 class RandomLogic with ChangeNotifier, DiagnosticableTreeMixin {
-  // final String _errorMessage = "Неверный формат числа";
-  // final String _pressGenText = 'Нажмите кнопку "СГЕНЕРИРОВАТЬ".';
-  // final String _errorReturn = "Сначала введите числа";
-
   int _start = 1;
   bool _startError = false;
   int _end = 10;

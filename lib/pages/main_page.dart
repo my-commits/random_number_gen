@@ -33,7 +33,10 @@ class MainPage extends StatelessWidget {
                 width: 512,
                 height: 1024,
                 child: (Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? MainAxisAlignment.end
+                          : MainAxisAlignment.center,
                   children: [
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,7 +47,7 @@ class MainPage extends StatelessWidget {
                           IconButton(
                               onPressed: () => Clipboard.setData(ClipboardData(
                                   text: context.read<RandomLogic>().result)),
-                              icon: Icon(Icons.copy))
+                              icon: const Icon(Icons.copy))
                         ]),
                     TextFormField(
                       focusNode: _startFocusNode,
@@ -79,7 +82,7 @@ class MainPage extends StatelessWidget {
                             : null,
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     FilledButton(
                         onPressed: () {
                           context.read<RandomLogic>().generate();
