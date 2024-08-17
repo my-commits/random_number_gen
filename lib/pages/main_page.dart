@@ -66,7 +66,6 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                     TextFormField(
-                      autofocus: true,
                       focusNode: _endFocusNode,
                       controller: _endController,
                       keyboardType: TextInputType.number,
